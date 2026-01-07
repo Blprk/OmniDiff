@@ -28,14 +28,14 @@
 ## 💻 Download & Install
 
 ### For macOS Users
-1. Download the latest `OmniDiff.zip` from the [Releases](https://github.com/Blprk/folder-compare-rust/releases) page.
+1. Download the latest `OmniDiff.zip` from the [Releases](https://github.com/Blprk/OmniDiff/releases) page.
 2. Unzip and move `OmniDiff.app` to your **Applications** folder.
 3. Open and enjoy.
 
 ### For Developers (Build from Source)
 ```bash
-git clone https://github.com/Blprk/folder-compare-rust.git
-cd folder-compare-rust
+git clone https://github.com/Blprk/OmniDiff.git
+cd OmniDiff
 cargo run --release
 ```
 
