@@ -42,7 +42,7 @@ if [ -f "AppIcon.icns" ]; then
     echo "✅ AppIcon.icns generated."
     
     # Install into bundle
-    DEST="OmniDiff.app/Contents/Resources/AppIcon.icns"
+    DEST="Folder Compare Pro.app/Contents/Resources/AppIcon.icns"
     cp "AppIcon.icns" "$DEST"
     echo "✅ Installed to $DEST"
     
