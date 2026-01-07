@@ -1,0 +1,22 @@
+[package]
+name = "folder_compare_rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = "0.24.0"
+egui = "0.24.0"
+egui_extras = { version = "0.24.0", features = ["all_loaders"] }
+walkdir = "2.4"
+rayon = "1.8"
+blake3 = "1.5"
+memmap2 = "0.9"
+hex = "0.4"
+rfd = "0.12"
+anyhow = "1.0"
+chrono = "0.4"
+humansize = "2.1"
+crossbeam-channel = "0.5"
+open = "5.0"
+similar = "2.4.0"
+image = { version = "0.24", features = ["jpeg", "png", "bmp"] }
