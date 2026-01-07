@@ -1232,28 +1232,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "98de4bbd547a563b716d8dfa9aad1cb19bfab00f4fa09a6a4ed21dbcf44ce9c4"
 
 [[package]]
-name = "folder_compare_rust"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "blake3",
- "chrono",
- "crossbeam-channel",
- "eframe",
- "egui",
- "egui_extras",
- "hex",
- "humansize",
- "image",
- "memmap2 0.9.9",
- "open",
- "rayon",
- "rfd",
- "similar",
- "walkdir",
-]
-
-[[package]]
 name = "foreign-types"
 version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2343,6 +2321,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c92d4ddb4bd7b50d730c215ff871754d0da6b2178849f8a2a2ab69712d0c073b"
 dependencies = [
  "objc",
+]
+
+[[package]]
+name = "omnidiff"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "blake3",
+ "chrono",
+ "crossbeam-channel",
+ "eframe",
+ "egui",
+ "egui_extras",
+ "hex",
+ "humansize",
+ "image",
+ "memmap2 0.9.9",
+ "open",
+ "rayon",
+ "rfd",
+ "similar",
+ "walkdir",
 ]
 
 [[package]]
