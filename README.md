@@ -2,8 +2,12 @@
 
 **OmniDiff** is an ultra-fast, industrial-grade folder comparison and synchronization tool built in Rust. It utilizes a state-of-the-art parallel engine and the Blake3 hashing algorithm to deliver 10x the performance of traditional diff tools.
 
-[![GitHub license](https://img.shields.io/github/license/Blprk/folder-compare-rust)](https://github.com/Blprk/folder-compare-rust/blob/main/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/Blprk/folder-compare-rust.svg)](https://github.com/Blprk/folder-compare-rust/releases)
+
+---
+
+**🔒 Private Production Repository**
+
+---
 
 ---
 
