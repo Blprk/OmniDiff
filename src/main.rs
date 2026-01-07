@@ -12,13 +12,13 @@ fn main() -> eframe::Result<()> {
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_inner_size([900.0, 700.0])
-            .with_title("Folder Compare Pro")
+            .with_title("OmniDiff Pro")
             .with_icon(std::sync::Arc::new(icon)),
         ..Default::default()
     };
     
     eframe::run_native(
-        "Folder Compare",
+        "OmniDiff Pro",
         options,
         Box::new(|cc| Box::new(FolderCompareApp::new(cc))),
     )
