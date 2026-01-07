@@ -1,5 +1,5 @@
 [package]
-name = "folder_compare_rust"
+name = "omnidiff"
 version = "0.1.0"
 edition = "2021"
 

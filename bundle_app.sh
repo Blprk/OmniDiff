@@ -1,6 +1,6 @@
 #!/bin/bash
-APP_NAME="Folder Compare Pro"
-EXECUTABLE_NAME="folder_compare_rust"
+APP_NAME="OmniDiff"
+EXECUTABLE_NAME="omnidiff"
 TARGET_DIR="target/release"
 
 # Ensure the executable exists

@@ -337,8 +337,8 @@ impl eframe::App for FolderCompareApp {
         egui::CentralPanel::default().show(ctx, |ui| {
             // 1. Header
             ui.vertical_centered(|ui| {
-                ui.heading("⚡ Folder Compare Pro");
-                ui.label(egui::RichText::new("Ultra-fast Rust Engine (Blake3 + Short-Circuit)").color(egui::Color32::GRAY));
+                ui.heading("🚀 OmniDiff Pro");
+                ui.label(egui::RichText::new("Ultra-parallel Sync Engine (Blake3)").color(egui::Color32::GRAY));
             });
             ui.add_space(15.0);
 
@@ -516,7 +516,7 @@ impl eframe::App for FolderCompareApp {
 
         // Diff Window Modal
         if self.diff_open {
-            egui::Window::new(format!("Diff: {}", self.diff_file_name))
+            egui::Window::new(format!("OmniDiff Viewer: {}", self.diff_file_name))
                 .open(&mut self.diff_open)
                 .default_size([800.0, 600.0])
                 .show(ctx, |ui| {
