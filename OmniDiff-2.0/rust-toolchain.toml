@@ -1,0 +1,3 @@
+# Rune is developed and tested against this toolchain; pin it so builds match.
+[toolchain]
+channel = "1.99.1"

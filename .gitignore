@@ -1,9 +1,11 @@
-/target
-/dist
+# Build artifacts
+target/
 *.app
+AppIcon.icns
+AppIcon.iconset/
+
+# Archives (releases carry these as release assets)
 *.zip
-*.icns
+
+# OS noise
 .DS_Store
-.agent/
-optimization_plan.md
-test_data/

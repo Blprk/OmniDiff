@@ -1,0 +1,42 @@
+[package]
+name = "rune-luau"
+version = "0.0.1"
+edition.workspace = true
+license.workspace = true
+
+[features]
+default = ["wasi-allocator"]
+# Luau native code generation for modules that open with `--!native` (Windows and Linux, x86-64 and
+# arm64; enable it only for those targets). Off, they run in the interpreter. On, every VM makes
+# a code generator as it starts: a 4 MiB committed code block per VM, used or not (21 VMs in
+# OpenCode held 88 MB of commit this way with no native module among them).
+native-code = ["mlua/luau-jit"]
+# `Script::watch`: reload a script folder when a file in it is saved (notify; native only).
+watch = ["dep:notify"]
+# On wasm32-unknown-unknown, Rust allocates through WASI libc's malloc, which Luau's C++ uses,
+# so one allocator owns linear memory. Off: the app installs such an allocator itself.
+wasi-allocator = []
+# Decoding script values into a host's own records: `Data::decode` (whole numbers decode into
+# `i64` fields on every target), and mlua's `LuaSerdeExt`.
+serde = ["mlua/serde", "dep:serde", "dep:serde_json"]
+
+[dependencies]
+rune = { path = "../rune", default-features = false }
+rustc-hash = "2"
+serde = { version = "1", optional = true }
+serde_json = { version = "1", optional = true }
+
+# mlua is pinned to a rev on main: wasm32-unknown-unknown support landed after 0.12.2.
+mlua = { git = "https://github.com/mlua-rs/mlua", rev = "a0ad4535fc72ba89967a931c5be57b162b5f0f3f", features = ["luau"] }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+notify = { version = "8.2", optional = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+web-sys = { version = "0.3", features = ["console"] }
+
+[lints]
+workspace = true

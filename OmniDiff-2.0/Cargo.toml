@@ -1,0 +1,40 @@
+[package]
+name = "omnidiff"
+version = "2.0.0"
+edition = "2021"
+description = "Ultra-fast folder comparison and synchronization, now on the Rune UI framework"
+license = "MIT"
+
+[[bin]]
+name = "omnidiff"
+path = "src/main.rs"
+
+[dependencies]
+walkdir = "2.4"
+rayon = "1.8"
+blake3 = "1.5"
+memmap2 = "0.9"
+hex = "0.4"
+anyhow = "1.0"
+chrono = "0.4"
+humansize = "2.1"
+kamadak-exif = "0.6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+filetime = "0.2"
+similar = "2.4"
+image = { version = "0.24", features = ["jpeg", "png", "bmp"] }
+
+# Rune UI framework — vendored at the dev rev we verified, with its own
+# patched winit / wgpu-hal / parley_engine (patches must be re-declared here;
+# a dependency's [patch] does not apply to the workspace depending on it).
+rune = { path = "rune/crates/rune", features = ["tooling", "native-file-dialog"] }
+rune-kit = { path = "rune/crates/rune-kit" }
+
+[patch.crates-io]
+winit = { path = "rune/vendor/winit" }
+wgpu-hal = { path = "rune/vendor/wgpu-hal" }
+parley_engine = { path = "rune/vendor/parley_engine" }
+
+[profile.release]
+opt-level = 3

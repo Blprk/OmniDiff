@@ -1,0 +1,9 @@
+/target
+/dist
+*.app
+*.zip
+*.icns
+.DS_Store
+.agent/
+optimization_plan.md
+test_data/

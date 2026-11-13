@@ -1,31 +1,53 @@
-name: Release Build
+name: Release
 
+# Builds the matching version folder on a tag push, runs the test suite,
+# bundles the .app and attaches the macOS zip to the GitHub release.
 on:
   push:
-    tags:
-      - 'v*'
+    tags: ["v*"]
+
+permissions:
+  contents: write
 
 jobs:
-  build-macos:
+  build-v1:
+    name: Build OmniDiff v1 (Classic / egui)
+    if: startsWith(github.ref_name, 'v1.')
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-        
-      - name: Build Release
-        run: cargo build --release
-        
-      - name: Package App
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Test
+        working-directory: OmniDiff-1.2.0
+        run: cargo test --release
+      - name: Bundle
+        working-directory: OmniDiff-1.2.0
         run: |
-          chmod +x bundle_app.sh
+          chmod +x bundle_app.sh create_icon.sh
           ./bundle_app.sh
-          zip -r OmniDiff_macOS.zip OmniDiff.app
-          
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
+          zip -r OmniDiff_v1.2.0_macOS.zip OmniDiff.app
+      - name: Attach to release
+        uses: softprops/action-gh-release@v2
         with:
-          files: OmniDiff_macOS.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: OmniDiff-1.2.0/OmniDiff_v1.2.0_macOS.zip
+
+  build-v2:
+    name: Build OmniDiff v2 (Rune GPU UI)
+    if: startsWith(github.ref_name, 'v2.')
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.99.1
+      - name: Test
+        working-directory: OmniDiff-2.0
+        run: cargo test --release
+      - name: Bundle
+        working-directory: OmniDiff-2.0
+        run: |
+          chmod +x bundle_app.sh create_icon.sh
+          ./bundle_app.sh
+          zip -r OmniDiff_v2.0.0_macOS.zip OmniDiff.app
+      - name: Attach to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: OmniDiff-2.0/OmniDiff_v2.0.0_macOS.zip

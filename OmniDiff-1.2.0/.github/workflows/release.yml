@@ -1,0 +1,31 @@
+name: Release Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        
+      - name: Build Release
+        run: cargo build --release
+        
+      - name: Package App
+        run: |
+          chmod +x bundle_app.sh
+          ./bundle_app.sh
+          zip -r OmniDiff_macOS.zip OmniDiff.app
+          
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: OmniDiff_macOS.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
